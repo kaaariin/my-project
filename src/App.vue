@@ -1,19 +1,37 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <img alt="Vue logo" src="./assets/logo.png" />
+    <Counter name="Counter 1" :initCount="5" @emitUp="getEvent" />
+    <Counter name="Counter 2" :initCount="10" @emitUp="getEvent" />
+    <p>
+      EventStack:
+      {{ stack }}
+    </p>
+    <HelloWorld msg="Welcome to Your Vue.js App" />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import HelloWorld from "./components/HelloWorld.vue";
+import Counter from "./components/Counter.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
+    HelloWorld,
+    Counter
+  },
+  data() {
+    return {
+      stack: []
+    }
+  },
+  methods: {
+    getEvent(payload) {
+      this.stack.push(payload)
+    }
   }
-}
+};
 </script>
 
 <style>
