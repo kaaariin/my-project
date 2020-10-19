@@ -14,7 +14,7 @@ export default {
     },
     data() {
         return {
-            count: this.initCount
+            count: this.initCount - 4
         }
     },
     methods: {
